@@ -1,21 +1,30 @@
-import { Component }       from '@angular/core';
+import { Component } from '@angular/core';
 
 import { QuestionService } from './question.service';
 
+
 @Component({
-  selector: 'app-root',
-  template: `
+    selector: 'app-root',
+    template: `
     <div>
-      <h2>Job Application for Heroes</h2>
-      <app-dynamic-form [questions]="questions"></app-dynamic-form>
+        <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
+
+        Here
+        <div>{{code}}</div>
+        <h2>Job Application for Heroes</h2>
+        <app-dynamic-form [questions]="questions"></app-dynamic-form>
     </div>
   `,
-  providers:  [QuestionService]
+    providers: [QuestionService]
 })
-export class AppComponent {
-  questions: any[];
+export class AppComponent  {
+    editorOptions = { language: 'javascript'};
+    code: "";
 
-  constructor(service: QuestionService) {
-    this.questions = service.getQuestions();
-  }
+    questions: any[];
+
+    constructor(service: QuestionService) {
+        this.questions = service.getQuestions();
+    }
+
 }
