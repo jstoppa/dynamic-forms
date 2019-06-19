@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { DropdownQuestion } from './question-dropdown';
-import { QuestionBase } from './question-base';
+import { QuestionBase } from './models/question-base';
 import { TextboxQuestion } from './question-textbox';
 
 @Injectable()

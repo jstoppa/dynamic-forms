@@ -1,6 +1,11 @@
 import { Component, OnChanges } from '@angular/core';
 
 import { QuestionService } from './question.service';
+import { Store, select } from '@ngrx/store';
+
+import * as fromForm from './store/reducers';
+import { Observable } from 'rxjs';
+import { QuestionBase } from './models/question-base';
 
 
 @Component({
@@ -50,10 +55,15 @@ export class AppComponent {
     }
 
     questions: any[];
+    questions$: Observable<QuestionBase<any>[]>;
 
-    constructor(private service: QuestionService) {
+    constructor(private service: QuestionService,
+                private store: Store<fromForm.State> ) {
+
+        this.questions$ = store.pipe(select(fromForm.getAllQuestions))
+        
         this.questions = service.getQuestions();
-        this._code = JSON.stringify(this.questions, null, 4);
+        
 
     }
    

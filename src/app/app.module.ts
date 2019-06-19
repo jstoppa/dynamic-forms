@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { DynamicFormComponent } from './dynamic-form.component';
 import { DynamicFormQuestionComponent } from './dynamic-form-question.component';
 import { MonacoEditorModule, NgxMonacoEditorConfig } from 'ngx-monaco-editor';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './store/reducers';
 
 const monacoConfig: NgxMonacoEditorConfig = {
     baseUrl: 'assets',
@@ -34,7 +36,9 @@ const monacoConfig: NgxMonacoEditorConfig = {
 
 
 @NgModule({
-    imports: [BrowserModule, ReactiveFormsModule, FormsModule, MonacoEditorModule.forRoot(monacoConfig)],
+    imports: [BrowserModule, ReactiveFormsModule, FormsModule, 
+        StoreModule.forRoot(reducers, { metaReducers }),
+        MonacoEditorModule.forRoot(monacoConfig)],
     declarations: [AppComponent, DynamicFormComponent, DynamicFormQuestionComponent],
     bootstrap: [AppComponent]
 })

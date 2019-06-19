@@ -1,3 +1,5 @@
+import { GridPosition } from './template';
+
 export class QuestionBase<T> {
     value: T;
     key: string;
@@ -22,9 +24,4 @@ export class QuestionBase<T> {
         this.order = options.order === undefined ? 1 : options.order;
         this.controlType = options.controlType || '';
     }
-}
-
-export interface GridPosition {
-    id: string;
-    index: number;
 }
