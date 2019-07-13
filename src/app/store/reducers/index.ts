@@ -2,7 +2,6 @@ import * as fromQuestions from './questions.reducer'
 import * as fromTemplate from './template.reducer'
 import * as fromData from './data.reducer'
 import { createFeatureSelector, createSelector, ActionReducerMap, MetaReducer } from '@ngrx/store';
-import { environment } from 'src/environments/environment';
 
 export interface State {
     data: fromData.State
@@ -10,26 +9,27 @@ export interface State {
     template: fromTemplate.State
 }
 
-export const metaReducers: MetaReducer<State>[] = !environment.production
-  ? []
-  : [];
-
-export const reducers: ActionReducerMap<State, any> = {
+export const reducers: ActionReducerMap<State> = {
     data: fromData.reducer,
     questions: fromQuestions.reducer,
     template: fromTemplate.reducer
   };
 
-export const getQuestionsState = createFeatureSelector<State, State>('questions');
+export const questionsFeature = createFeatureSelector<fromQuestions.State>('questions');
 
-export const getQuestionsEntityState = createSelector(
-    getQuestionsState,
-    state => state.questions
+export const getQuestions = createSelector(
+    questionsFeature,
+    (state: fromQuestions.State) => state.entities
 );
 
-export const {
-    selectAll: getAllQuestions,
-  } = fromQuestions.adapter.getSelectors(getQuestionsEntityState);
+// export const getQuestions = createSelector(
+//     getQuestionsState, 
+
+// )
+
+// export const {
+//     selectAll: getAllQuestions,
+//   } = fromQuestions.adapter.getSelectors(getQuestionsEntityState);
 
 
 

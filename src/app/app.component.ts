@@ -1,11 +1,11 @@
-import { Component, OnChanges } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 
-import { QuestionService } from './question.service';
 import { Store, select } from '@ngrx/store';
 
 import * as fromForm from './store/reducers';
 import { Observable } from 'rxjs';
 import { QuestionBase } from './models/question-base';
+import { QuestionActions } from './store/actions';
 
 
 @Component({
@@ -19,7 +19,7 @@ import { QuestionBase } from './models/question-base';
             </div>
             <div class="form">
                 <h2>Job Application for Heroes</h2>
-                <app-dynamic-form [questions]="questions"></app-dynamic-form>
+                <app-dynamic-form  [questions]="(questions$ | async)"></app-dynamic-form>
             </div>
         </div>
     </div>
@@ -44,27 +44,32 @@ import { QuestionBase } from './models/question-base';
           .form { grid-area: form; }
         
         `
-    ],
-    providers: [QuestionService]
+    ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+    
     editorOptions = { language: 'json', automaticLayout: true, fontSize: "25px"};
     _code = "";
-    set code (value: string) {
-        debugger;
-    }
+    set code (value: string) {}
 
     questions: any[];
-    questions$: Observable<QuestionBase<any>[]>;
+    questions$: any;
 
-    constructor(private service: QuestionService,
-                private store: Store<fromForm.State> ) {
-
-        this.questions$ = store.pipe(select(fromForm.getAllQuestions))
+    constructor(private store: Store<fromForm.State> ) {
+        this.questions$ = this.store.pipe(select(fromForm.getQuestions));
         
-        this.questions = service.getQuestions();
-        
-
     }
+
+    ngOnInit(): void {
+        this.store.dispatch(QuestionActions.loadQuestions());
+
+        
+        // this.questions$.subscribe(res => {
+        //     debugger;
+        //     this.questions = res; 
+        //     this._code = JSON.stringify(this.questions, null, 4);
+        // });
+    }
+    
    
 }

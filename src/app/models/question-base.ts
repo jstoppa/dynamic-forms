@@ -1,6 +1,7 @@
 import { GridPosition } from './template';
 
 export class QuestionBase<T> {
+    id: string;
     value: T;
     key: string;
     label: string;
@@ -10,6 +11,7 @@ export class QuestionBase<T> {
     position: GridPosition;
 
     constructor(options: {
+        id?: string,
         value?: T,
         key?: string,
         label?: string,
@@ -17,6 +19,7 @@ export class QuestionBase<T> {
         order?: number,
         controlType?: string
     } = {}) {
+        this.id = options.id;
         this.value = options.value;
         this.key = options.key || '';
         this.label = options.label || '';

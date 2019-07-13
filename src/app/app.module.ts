@@ -7,7 +7,10 @@ import { DynamicFormComponent } from './dynamic-form.component';
 import { DynamicFormQuestionComponent } from './dynamic-form-question.component';
 import { MonacoEditorModule, NgxMonacoEditorConfig } from 'ngx-monaco-editor';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './store/reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { QuestionEffects } from './store/effects/question.effects';
+import { reducers } from './store/reducers';
 
 const monacoConfig: NgxMonacoEditorConfig = {
     baseUrl: 'assets',
@@ -37,7 +40,11 @@ const monacoConfig: NgxMonacoEditorConfig = {
 
 @NgModule({
     imports: [BrowserModule, ReactiveFormsModule, FormsModule, 
-        StoreModule.forRoot(reducers, { metaReducers }),
+        //StoreModule.forRoot(reducers, { metaReducers }),
+        StoreModule.forRoot(reducers),
+        //StoreModule.forFeature('questions', reducers),
+        EffectsModule.forRoot([QuestionEffects]),
+        StoreDevtoolsModule.instrument(),
         MonacoEditorModule.forRoot(monacoConfig)],
     declarations: [AppComponent, DynamicFormComponent, DynamicFormQuestionComponent],
     bootstrap: [AppComponent]

@@ -1,12 +1,16 @@
-import { createAction, props } from '@ngrx/store';
-import { QuestionBase } from '../../models/question-base';
+import { createAction, props, union } from "@ngrx/store";
+import { QuestionBase } from "../../models/question-base";
 
-export const loadQuestions = createAction(
-    '[Form] LOAD questions',
-    props<{ questions: QuestionBase<any>[] }>()
-)
+export const loadQuestions = createAction("[Form] LOAD questions");
 
-export type QuestionActionsUnion = ReturnType<typeof loadQuestions>;
+export const loadQuestionsSucess = createAction(
+  "[Form] LOAD questions Success",
+  props<{ questions: QuestionBase<any>[] }>()
+);
+
+const all = union({ loadQuestions, loadQuestionsSucess });
+
+export type QuestionActionsUnion = typeof all;
 
 // export const updateForm = createAction(
 //     '[Form] UPDATE FORM Requested',
