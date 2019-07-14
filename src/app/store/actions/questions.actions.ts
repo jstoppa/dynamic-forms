@@ -8,29 +8,11 @@ export const loadQuestionsSucess = createAction(
   props<{ questions: QuestionBase<any>[] }>()
 );
 
-const all = union({ loadQuestions, loadQuestionsSucess });
+export const updateQuestions = createAction(
+  "[Form] UPDATE questions",
+  props<{ questions: QuestionBase<any>[] }>()
+);
+
+const all = union({ loadQuestions, loadQuestionsSucess, updateQuestions });
 
 export type QuestionActionsUnion = typeof all;
-
-// export const updateForm = createAction(
-//     '[Form] UPDATE FORM Requested',
-//     props<{ form: DynamicForm , data: any}>()
-// )
-
-// export const updateData = createAction(
-//     '[Form] UPDATE DATA Requested',
-//     props<{ data: any }>()
-// )
-
-// export const error = createAction(
-//     '[Form] Error',
-//     props<{ error: string }>()
-// )
-
-// const all = union({
-//     loadForm,
-//     updateForm,
-//     updateData,
-//     error
-//   });
-//   export type FormActionsUnion = typeof all;

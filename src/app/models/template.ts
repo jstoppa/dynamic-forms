@@ -1,7 +1,7 @@
 export interface Template {
+    gridTemplateAreas: string;
     gridTemplateColumns: string;
     gridTemplateRows: string;
-    gridTemplateAreas: string;
 }
 
 export interface GridPosition {

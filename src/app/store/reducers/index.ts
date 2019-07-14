@@ -22,26 +22,10 @@ export const getQuestions = createSelector(
     (state: fromQuestions.State) => state.entities
 );
 
-// export const getQuestions = createSelector(
-//     getQuestionsState, 
+export const templateFeature = createFeatureSelector<fromTemplate.State>('template');
 
-// )
+export const getTemplate = createSelector(
+    templateFeature,
+    (state: fromTemplate.State) => state.template
+);
 
-// export const {
-//     selectAll: getAllQuestions,
-//   } = fromQuestions.adapter.getSelectors(getQuestionsEntityState);
-
-
-
-// import { createFeatureSelector, State, createSelector } from '@ngrx/store';
-// import { FormState } from './form.reducer';
-
-// export const getFormState = createFeatureSelector<FormState>('form');
-
-// // https://stackblitz.com/edit/create-selector-props
-// // https://stackblitz.com/edit/musicq-angular-ngrx
-
-// export const getForm = createSelector(
-//     getFormState,
-//     state => state.form
-// );

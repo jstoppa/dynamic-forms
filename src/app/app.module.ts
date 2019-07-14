@@ -11,6 +11,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { QuestionEffects } from './store/effects/question.effects';
 import { reducers } from './store/reducers';
+import { PageComponent } from './page.component';
+import { TemplateEffects } from './store/effects/template.effects';
 
 const monacoConfig: NgxMonacoEditorConfig = {
     baseUrl: 'assets',
@@ -40,13 +42,11 @@ const monacoConfig: NgxMonacoEditorConfig = {
 
 @NgModule({
     imports: [BrowserModule, ReactiveFormsModule, FormsModule, 
-        //StoreModule.forRoot(reducers, { metaReducers }),
         StoreModule.forRoot(reducers),
-        //StoreModule.forFeature('questions', reducers),
-        EffectsModule.forRoot([QuestionEffects]),
+        EffectsModule.forRoot([QuestionEffects, TemplateEffects]),
         StoreDevtoolsModule.instrument(),
         MonacoEditorModule.forRoot(monacoConfig)],
-    declarations: [AppComponent, DynamicFormComponent, DynamicFormQuestionComponent],
+    declarations: [AppComponent, PageComponent, DynamicFormComponent, DynamicFormQuestionComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule {
