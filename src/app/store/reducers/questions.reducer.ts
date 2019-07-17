@@ -25,23 +25,21 @@ export function reducer(
   action: QuestionActionsUnion
 ): State {
   switch (action.type) {
-    case loadQuestions.type: {
+    case loadQuestions.type: 
       return { ...state };
-    }
-    case loadQuestionsSucess.type: {
+    
+    case loadQuestionsSucess.type: 
       return adapter.addAll(action.questions, state);
-    }
-    case updateQuestions.type: {
-      return adapter.updateMany(
-        action.questions.map(question =>
-          Object.assign({}, { id: question.id, changes: question })
-        ),
+    
+    case updateQuestions.type: 
+      return adapter.addAll(
+        action.questions,
         state
       );
-    }
-    default: {
+    
+    default: 
       return state;
-    }
+    
   }
 }
 

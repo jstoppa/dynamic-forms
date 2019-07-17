@@ -1,8 +1,11 @@
 <div>
   <form (ngSubmit)="onSubmit()" [formGroup]="form">
-
-    <div *ngFor="let question of questions | keyvalue" class="form-row">
-        <app-question [question]="question.value" [form]="form"></app-question>
+    <div>
+      <ng-template gdConfig [gdConfigOf]="template" let-templateitem let-i="index">
+        <div app-dynamic-container [positionId]="templateitem.id" [ngStyle]="templateitem.style" [questions]="questions"
+          [form]="form">
+        </div>
+      </ng-template>
     </div>
 
     <div class="form-row">

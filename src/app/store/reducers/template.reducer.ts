@@ -6,13 +6,9 @@ import {
   loadTemplateSucess
 } from "../actions/template.actions";
 
-export interface State {
-  template: Template;
-}
+export interface State {};
 
-export const initialState: State = {
-  template: null
-};
+export const initialState: State = <Template>{};
 
 export function reducer(
   state = initialState,
@@ -22,8 +18,10 @@ export function reducer(
     case loadTemplate.type:
       return { ...state };
     case loadTemplateSucess.type:
-      return { template: action.template };
+      return action.template;
     case updateTemplate.type:
-      return { template: action.template };
+      return action.template;
+    default: 
+      return { ...state };
   }
 }

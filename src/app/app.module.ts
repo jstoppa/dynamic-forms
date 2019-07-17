@@ -13,6 +13,9 @@ import { QuestionEffects } from './store/effects/question.effects';
 import { reducers } from './store/reducers';
 import { PageComponent } from './page.component';
 import { TemplateEffects } from './store/effects/template.effects';
+import { LayoutDirective } from './directives/layout.directive';
+import { CommonModule } from '@angular/common';
+import { DynamicContainerComponent } from './dynamic-container.component';
 
 const monacoConfig: NgxMonacoEditorConfig = {
     baseUrl: 'assets',
@@ -46,7 +49,7 @@ const monacoConfig: NgxMonacoEditorConfig = {
         EffectsModule.forRoot([QuestionEffects, TemplateEffects]),
         StoreDevtoolsModule.instrument(),
         MonacoEditorModule.forRoot(monacoConfig)],
-    declarations: [AppComponent, PageComponent, DynamicFormComponent, DynamicFormQuestionComponent],
+    declarations: [AppComponent, LayoutDirective, DynamicContainerComponent, PageComponent, DynamicFormComponent, DynamicFormQuestionComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule {

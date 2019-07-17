@@ -1,10 +1,9 @@
-import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { QuestionBase } from "../models/question-base";
 import { TextboxQuestion } from "../question-textbox";
 import { DropdownQuestion } from "../question-dropdown";
-import { Action } from "@ngrx/store";
+
 
 @Injectable({
   providedIn: "root"
@@ -20,7 +19,10 @@ export class QuestionService {
         label: "First name",
         value: "Bombasto",
         required: true,
-        order: 1
+        position: {
+          id: "left",
+          index: 1
+        }
       }),
       new TextboxQuestion({
         id: "2",
@@ -32,6 +34,10 @@ export class QuestionService {
           readonly: "",
           hidden: "",
           required: "firstname"
+        },
+        position: {
+          id: "right",
+          index: 2
         }
       }),
       new DropdownQuestion({
@@ -44,7 +50,10 @@ export class QuestionService {
           { key: "good", value: "Good" },
           { key: "unproven", value: "Unproven" }
         ],
-        order: 3
+        position: {
+          id: "right",
+          index: 3
+        }
       })
     ]);
   }

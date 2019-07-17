@@ -3,6 +3,7 @@ import { FormGroup }                 from '@angular/forms';
 
 import { QuestionBase }              from './models/question-base';
 import { QuestionControlService }    from './question-control.service';
+import { Template } from './models/template';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -12,6 +13,8 @@ import { QuestionControlService }    from './question-control.service';
 export class DynamicFormComponent implements OnInit {
 
   @Input() questions: any = [];
+  @Input() template: Template;
+  
   form: FormGroup;
   payLoad = '';
 

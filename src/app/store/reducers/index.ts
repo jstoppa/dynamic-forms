@@ -26,6 +26,6 @@ export const templateFeature = createFeatureSelector<fromTemplate.State>('templa
 
 export const getTemplate = createSelector(
     templateFeature,
-    (state: fromTemplate.State) => state.template
+    (state: fromTemplate.State) => state
 );
 

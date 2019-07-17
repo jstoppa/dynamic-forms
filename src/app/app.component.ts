@@ -4,7 +4,6 @@ import { Store, select } from "@ngrx/store";
 
 import * as fromForm from "./store/reducers";
 import { QuestionActions, TemplateActions } from "./store/actions";
-import { Template } from '@angular/compiler/src/render3/r3_ast';
 
 @Component({
   selector: "app-root",

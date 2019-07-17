@@ -1,0 +1,41 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "editor form";
+  grid-gap: 50px;
+  height: 100%;
+}
+
+.mainDiv {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.code-editor {
+  height: 100%;
+}
+
+.editor-container {
+  grid-area: editor;
+}
+
+.editor {
+  height: 100%;
+  width: 100%;
+}
+
+.form {
+  grid-area: form;
+  margin-right: 60px;
+}
+
+.button {
+  margin: 10px;
+  margin-left: 50px;
+  margin-top: 20px;
+  font-size: 25px;
+}
