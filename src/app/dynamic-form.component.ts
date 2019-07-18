@@ -8,7 +8,8 @@ import { Template } from './models/template';
 @Component({
   selector: 'app-dynamic-form',
   templateUrl: './dynamic-form.component.html',
-  providers: [ QuestionControlService ]
+  providers: [ QuestionControlService ],
+  styleUrls: ['./dynamic-form.component.css']
 })
 export class DynamicFormComponent implements OnInit {
 

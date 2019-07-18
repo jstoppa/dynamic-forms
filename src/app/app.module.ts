@@ -16,43 +16,49 @@ import { TemplateEffects } from './store/effects/template.effects';
 import { LayoutDirective } from './directives/layout.directive';
 import { CommonModule } from '@angular/common';
 import { DynamicContainerComponent } from './dynamic-container.component';
+import { DropdownQuestionComponent } from './question-dropdown.component';
+import { TextboxQuestionComponent } from './question-textbox.component';
+import { ButtonQuestionComponent } from './question-button.component';
 
 const monacoConfig: NgxMonacoEditorConfig = {
-    baseUrl: 'assets',
-    defaultOptions: { scrollBeyondLastLine: false },
-    onMonacoLoad: () => {
-        console.log((window as any).monaco);
-        monaco.languages.typescript.javascriptDefaults.setDiagnosticsOptions({
-            noSemanticValidation: true,
-            noSyntaxValidation: false
-        });
-        monaco.languages.typescript.javascriptDefaults.setCompilerOptions({
-            target: monaco.languages.typescript.ScriptTarget.ES2016,
-            allowNonTsExtensions: true,
-            noLib: true
-        });
-        monaco.languages.typescript.javascriptDefaults.addExtraLib([
-            'declare class contact {',
-            '    /**',
-            '     * Returns the next fact',
-            '     */',
-            '    static firstName:string',
-            '}',
-        ].join('\n'), 'filename/facts.d.ts');
-    }
+  baseUrl: 'assets',
+  defaultOptions: { scrollBeyondLastLine: false },
+  onMonacoLoad: () => {
+    console.log((window as any).monaco);
+    monaco.languages.typescript.javascriptDefaults.setDiagnosticsOptions({
+      noSemanticValidation: true,
+      noSyntaxValidation: false
+    });
+    monaco.languages.typescript.javascriptDefaults.setCompilerOptions({
+      target: monaco.languages.typescript.ScriptTarget.ES2016,
+      allowNonTsExtensions: true,
+      noLib: true
+    });
+    monaco.languages.typescript.javascriptDefaults.addExtraLib([
+      'declare class contact {',
+      '    /**',
+      '     * Returns the next fact',
+      '     */',
+      '    static firstName:string',
+      '}',
+    ].join('\n'), 'filename/facts.d.ts');
+  }
 };
 
 
 @NgModule({
-    imports: [BrowserModule, ReactiveFormsModule, FormsModule, 
-        StoreModule.forRoot(reducers),
-        EffectsModule.forRoot([QuestionEffects, TemplateEffects]),
-        StoreDevtoolsModule.instrument(),
-        MonacoEditorModule.forRoot(monacoConfig)],
-    declarations: [AppComponent, LayoutDirective, DynamicContainerComponent, PageComponent, DynamicFormComponent, DynamicFormQuestionComponent],
-    bootstrap: [AppComponent]
+  imports: [BrowserModule, ReactiveFormsModule, FormsModule,
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([QuestionEffects, TemplateEffects]),
+    StoreDevtoolsModule.instrument(),
+    MonacoEditorModule.forRoot(monacoConfig)],
+  declarations: [AppComponent, LayoutDirective, DynamicContainerComponent,
+    PageComponent, DynamicFormComponent, DynamicFormQuestionComponent, DropdownQuestionComponent, 
+    TextboxQuestionComponent, ButtonQuestionComponent],
+  entryComponents: [DropdownQuestionComponent, TextboxQuestionComponent, ButtonQuestionComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
-    constructor() {
-    }
+  constructor() {
+  }
 }

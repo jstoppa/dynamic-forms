@@ -54,6 +54,18 @@ export class QuestionService {
           id: "right",
           index: 3
         }
+      }),
+      new QuestionBase({
+        id: "4",
+        key: "firstName",
+        label: "First name",
+        value: "Bombasto",
+        required: true,
+        position: {
+          id: "left",
+          index: 1
+        },
+        controlType: "ButtonQuestionComponent"
       })
     ]);
   }

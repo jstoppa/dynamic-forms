@@ -1,7 +1,7 @@
 import { QuestionBase } from './models/question-base';
 
 export class DropdownQuestion extends QuestionBase<string> {
-  controlType = 'dropdown';
+  controlType = 'DropdownQuestionComponent';
   options: {key: string, value: string}[] = [];
 
   constructor(options: {} = {}) {
