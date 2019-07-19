@@ -1,28 +1,36 @@
-import { Component, Input, OnInit }  from '@angular/core';
-import { FormGroup }                 from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
-import { QuestionBase }              from './models/question-base';
-import { QuestionControlService }    from './question-control.service';
+import * as fromForm from "./store/reducers";
+import { QuestionControlService } from './question-control.service';
 import { Template } from './models/template';
+import { Store } from '@ngrx/store';
+import { DataActions } from './store/actions';
 
 @Component({
   selector: 'app-dynamic-form',
   templateUrl: './dynamic-form.component.html',
-  providers: [ QuestionControlService ],
+  providers: [QuestionControlService],
   styleUrls: ['./dynamic-form.component.css']
 })
 export class DynamicFormComponent implements OnInit {
 
   @Input() questions: any = [];
   @Input() template: Template;
-  
+
   form: FormGroup;
   payLoad = '';
 
-  constructor(private qcs: QuestionControlService) {  }
+  constructor(
+    private qcs: QuestionControlService,
+    private store: Store<fromForm.State>
+  ) { }
 
   ngOnInit() {
     this.form = this.qcs.toFormGroup(this.questions);
+    this.form.valueChanges.subscribe(data => {
+      this.store.dispatch(DataActions.updateData({ data: this.form.value }));
+    });
   }
 
   onSubmit() {

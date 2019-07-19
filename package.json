@@ -26,6 +26,7 @@
     "@angular/upgrade": "^8.1.0-next.1",
     "@ngrx/effects": "^8.1.0",
     "@ngrx/entity": "^8.0.1",
+    "@ngrx/router-store": "^8.1.0",
     "@ngrx/store": "^8.0.1",
     "@ngrx/store-devtools": "^8.1.0",
     "angular-in-memory-web-api": "github:brandonroberts/in-memory-web-api-bazel#50a34d8",

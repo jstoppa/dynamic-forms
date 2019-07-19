@@ -10,8 +10,8 @@ export class TemplateService {
 
   getTemplate(): Observable<Template> {
     return of(<Template>{
-      gridTemplateAreas: "'left right'",
-      gridTemplateColumns: "1fr 1fr",
+      gridTemplateAreas: "'left'",
+      gridTemplateColumns: "1fr",
       gridTemplateRows: "1fr",
       gridGap: "20px",
       showBorder: false

@@ -10,15 +10,18 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { QuestionEffects } from './store/effects/question.effects';
-import { reducers } from './store/reducers';
 import { PageComponent } from './page.component';
 import { TemplateEffects } from './store/effects/template.effects';
 import { LayoutDirective } from './directives/layout.directive';
-import { CommonModule } from '@angular/common';
 import { DynamicContainerComponent } from './dynamic-container.component';
 import { DropdownQuestionComponent } from './question-dropdown.component';
 import { TextboxQuestionComponent } from './question-textbox.component';
 import { ButtonQuestionComponent } from './question-button.component';
+
+import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
+import { RouterModule } from '@angular/router';
+import { routes } from './app.routes';
+import { reducers } from './store/reducers';
 
 const monacoConfig: NgxMonacoEditorConfig = {
   baseUrl: 'assets',
@@ -48,9 +51,11 @@ const monacoConfig: NgxMonacoEditorConfig = {
 
 @NgModule({
   imports: [BrowserModule, ReactiveFormsModule, FormsModule,
+    RouterModule.forRoot( routes, { useHash: true }),
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([QuestionEffects, TemplateEffects]),
     StoreDevtoolsModule.instrument(),
+    StoreRouterConnectingModule.forRoot({stateKey: 'router'}),
     MonacoEditorModule.forRoot(monacoConfig)],
   declarations: [AppComponent, LayoutDirective, DynamicContainerComponent,
     PageComponent, DynamicFormComponent, DynamicFormQuestionComponent, DropdownQuestionComponent, 

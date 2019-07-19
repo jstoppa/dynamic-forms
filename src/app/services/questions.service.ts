@@ -36,7 +36,7 @@ export class QuestionService {
           required: "firstname"
         },
         position: {
-          id: "right",
+          id: "left",
           index: 2
         }
       }),
@@ -51,7 +51,7 @@ export class QuestionService {
           { key: "unproven", value: "Unproven" }
         ],
         position: {
-          id: "right",
+          id: "left",
           index: 3
         }
       }),
@@ -63,7 +63,7 @@ export class QuestionService {
         required: true,
         position: {
           id: "left",
-          index: 1
+          index: 4
         },
         controlType: "ButtonQuestionComponent"
       })

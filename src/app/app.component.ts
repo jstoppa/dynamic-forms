@@ -14,10 +14,12 @@ import { QuestionActions, TemplateActions } from "./store/actions";
 export class AppComponent implements OnInit {
   questions$: any;
   template$: any;
+  data$: any;
 
   constructor(private store: Store<fromForm.State>) {
     this.questions$ = this.store.pipe(select(fromForm.getQuestions));
     this.template$ = this.store.pipe(select(fromForm.getTemplate));
+    this.data$ = this.store.pipe(select(fromForm.getData));
   }
 
   ngOnInit(): void {

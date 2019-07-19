@@ -1,26 +1,20 @@
-import { TemplateActionsUnion, loadTemplate, updateTemplate } from '../actions/template.actions';
+import { DataActionsUnion, loadData, updateData } from '../actions/data.actions';
 
-export interface State  {
-    data: any
-}
+export interface State {};
 
-export const initialState: State = {
-    data: null
-}
+export const initialState: State = { };
 
 export function reducer(
-    state = initialState,
-    action: TemplateActionsUnion
+  state = initialState,
+  action: DataActionsUnion
 ): State {
-    switch(action.type) {
-        case loadTemplate.type:
-            return {
-                ...state
-            }
-        case updateTemplate.type:
-            return {
-                ...state
-            }
-    }
+  switch (action.type) {
+    case loadData.type:
+      return { ...state }
+    case updateData.type:
+      return { ...action.data } 
+    default:
+      return state;
+  }
 }
 

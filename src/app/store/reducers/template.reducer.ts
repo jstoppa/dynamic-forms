@@ -5,6 +5,7 @@ import {
   updateTemplate,
   loadTemplateSucess
 } from "../actions/template.actions";
+import { updateData } from '../actions/data.actions';
 
 export interface State {};
 
@@ -18,10 +19,13 @@ export function reducer(
     case loadTemplate.type:
       return { ...state };
     case loadTemplateSucess.type:
-      return action.template;
+      return { ...action.template };
     case updateTemplate.type:
-      return action.template;
+      return { ...action.template };
     default: 
-      return { ...state };
+      if (action['type'] === updateData.type)
+        return state;
+      else
+        return { ...state };
   }
 }

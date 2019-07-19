@@ -17,22 +17,23 @@ export class LayoutDirective {
     private el: ElementRef,
     private renderer: Renderer2,
     private template: TemplateRef<any>
-  ) {}
+  ) { }
 
   @Input()
   set gdConfigOf(template: Template) {
     this.view.clear();
+    if (template && Object.keys(template).length > 0) {
+      this.setParentAttributes(template);
 
-    this.setParentAttributes(template);
-
-    const list = this.getGridStyleList(template);
-    if (list)
-      list.forEach((item, index) => {
-        this.view.createEmbeddedView(this.template, {
-          $implicit: item,
-          index
+      const list = this.getGridStyleList(template);
+      if (list)
+        list.forEach((item, index) => {
+          this.view.createEmbeddedView(this.template, {
+            $implicit: item,
+            index
+          });
         });
-      });
+    }
   }
 
   /**
@@ -100,8 +101,7 @@ export class LayoutDirective {
     if (template.gridGap)
       styleAttrValue += `grid-gap:${template.gridGap};`;
 
-    if (template.gridTemplateAreas)
-    {
+    if (template.gridTemplateAreas) {
       const gridArea = template.gridTemplateAreas.replace(/'/g, "\"");
       styleAttrValue += `grid-template-areas:${gridArea};`;
     }
@@ -109,7 +109,7 @@ export class LayoutDirective {
     if (template.gridTemplateColumns) {
       styleAttrValue += `grid-template-columns:${
         template.gridTemplateColumns
-      };`;
+        };`;
       styleAttrValue += `-ms-grid-columns:${template.gridTemplateColumns};`;
     }
 
