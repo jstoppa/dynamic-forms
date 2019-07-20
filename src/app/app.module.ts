@@ -22,6 +22,7 @@ import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
 import { reducers } from './store/reducers';
+import { TextareaQuestionComponent } from './question-textarea.component';
 
 const monacoConfig: NgxMonacoEditorConfig = {
   baseUrl: 'assets',
@@ -59,8 +60,9 @@ const monacoConfig: NgxMonacoEditorConfig = {
     MonacoEditorModule.forRoot(monacoConfig)],
   declarations: [AppComponent, LayoutDirective, DynamicContainerComponent,
     PageComponent, DynamicFormComponent, DynamicFormQuestionComponent, DropdownQuestionComponent, 
-    TextboxQuestionComponent, ButtonQuestionComponent],
-  entryComponents: [DropdownQuestionComponent, TextboxQuestionComponent, ButtonQuestionComponent],
+    TextboxQuestionComponent, ButtonQuestionComponent, TextareaQuestionComponent],
+  entryComponents: [DropdownQuestionComponent, TextboxQuestionComponent, ButtonQuestionComponent,
+  TextareaQuestionComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

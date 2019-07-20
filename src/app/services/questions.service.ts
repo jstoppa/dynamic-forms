@@ -17,10 +17,8 @@ export class QuestionService {
         id: "1",
         key: "firstName",
         label: "First name",
-        value: "Bombasto",
-        required: true,
         position: {
-          id: "left",
+          id: "topleft",
           index: 1
         }
       }),
@@ -31,12 +29,12 @@ export class QuestionService {
         type: "email",
         order: 2,
         rules: {
-          readonly: "",
-          hidden: "",
-          required: "firstname"
+          readonly: {
+            condition: ""
+          }
         },
         position: {
-          id: "left",
+          id: "topleft",
           index: 2
         }
       }),
@@ -51,7 +49,7 @@ export class QuestionService {
           { key: "unproven", value: "Unproven" }
         ],
         position: {
-          id: "left",
+          id: "topleft",
           index: 3
         }
       }),
@@ -59,10 +57,9 @@ export class QuestionService {
         id: "4",
         key: "firstName",
         label: "First name",
-        value: "Bombasto",
         required: true,
         position: {
-          id: "left",
+          id: "topleft",
           index: 4
         },
         controlType: "ButtonQuestionComponent"

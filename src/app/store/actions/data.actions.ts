@@ -1,9 +1,6 @@
 import { createAction, props, union } from '@ngrx/store';
 
-export const loadData = createAction(
-    '[Data] Load Data',
-    props<{ data: any }>()  
-);
+export const loadData = createAction('[Data] Load Data');
 
 export const updateData = createAction(
     '[Data] Update Data',

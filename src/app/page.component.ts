@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Store } from "@ngrx/store";
 import * as fromForm from "./store/reducers";
-import { QuestionActions, TemplateActions } from "./store/actions";
+import { QuestionActions, TemplateActions, DataActions } from "./store/actions";
 import { QuestionBase } from "./models/question-base";
 import { Template } from './models/template';
 
@@ -13,6 +13,7 @@ import { Template } from './models/template';
 export class PageComponent implements OnInit {
   @Input() questions: any = [];
   @Input() template: Template = null;
+  @Input() data = null;
   
   editorOptions = {
     theme: "vs-dark",
@@ -22,6 +23,7 @@ export class PageComponent implements OnInit {
   };
   questionsError = "";
   templateError = "";
+  dataError = "";
 
   editorType = EditorType;
   activeEditor = EditorType.Questions;
@@ -69,5 +71,6 @@ export class PageComponent implements OnInit {
 
 export enum EditorType {
   Questions,
-  Template
+  Template,
+  Data
 }

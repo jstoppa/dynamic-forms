@@ -10,11 +10,11 @@ export function reducer(
 ): State {
   switch (action.type) {
     case loadData.type:
-      return { ...state }
+      return { ...state };
     case updateData.type:
       return { ...action.data } 
     default:
-      return state;
+      return { ...state };
   }
 }
 

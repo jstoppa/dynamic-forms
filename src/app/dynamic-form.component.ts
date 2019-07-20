@@ -6,6 +6,7 @@ import { QuestionControlService } from './question-control.service';
 import { Template } from './models/template';
 import { Store } from '@ngrx/store';
 import { DataActions } from './store/actions';
+import { QuestionBase } from './models/question-base';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -15,8 +16,14 @@ import { DataActions } from './store/actions';
 })
 export class DynamicFormComponent implements OnInit {
 
-  @Input() questions: any = [];
+  @Input() questions: QuestionBase<any>[] = [];
   @Input() template: Template;
+  @Input('data') set data(value: any) {
+    const result = this.qcs.evaluateRules(this.questions, this.form, value);
+    this.questions = result.questions;
+    this.form = result.form;
+  }
+
 
   form: FormGroup;
   payLoad = '';
@@ -28,7 +35,7 @@ export class DynamicFormComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.qcs.toFormGroup(this.questions);
-    this.form.valueChanges.subscribe(data => {
+    this.form.valueChanges.subscribe(() => {
       this.store.dispatch(DataActions.updateData({ data: this.form.value }));
     });
   }

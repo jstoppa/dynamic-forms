@@ -3,12 +3,12 @@ import { Component,OnInit } from "@angular/core";
 import { Store, select } from "@ngrx/store";
 
 import * as fromForm from "./store/reducers";
-import { QuestionActions, TemplateActions } from "./store/actions";
+import { QuestionActions, TemplateActions, DataActions } from "./store/actions";
 
 @Component({
   selector: "app-root",
   template: `
-    <app-page [questions]="questions$ | async" [template]="template$ | async"></app-page>
+    <app-page [questions]="questions$ | async" [template]="template$ | async" [data]="data$ | async"></app-page>
   `
 })
 export class AppComponent implements OnInit {
@@ -25,5 +25,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(QuestionActions.loadQuestions());
     this.store.dispatch(TemplateActions.loadTemplate());
+    this.store.dispatch(DataActions.loadData());
   }
 }

@@ -2,9 +2,6 @@ import { Component, Input, OnInit, ComponentFactoryResolver, ViewContainerRef, T
 import { FormGroup } from '@angular/forms';
 
 import { QuestionBase } from './models/question-base';
-import { Store } from '@ngrx/store';
-import * as fromForm from "./store/reducers";
-import { DataActions } from './store/actions';
 
 @Component({
   selector: 'app-question',

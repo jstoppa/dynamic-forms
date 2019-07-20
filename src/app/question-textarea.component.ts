@@ -6,17 +6,17 @@ import { FormGroup } from '@angular/forms';
   template: `
   <div [formGroup]="form">
     <label 
-     [ngClass]="{'label-required': question.rules?.required?.value}"
-     [attr.for]="question.key">{{question.label}}</label>
-      <input [formControlName]="question.key"
-        [id]="question.key" [type]="question.type">
+       [ngClass]="{'label-required': question.rules?.required?.value}"
+       [attr.for]="question.key">{{question.label}}</label>
+      <textarea [formControlName]="question.key" rows="4"
+        [id]="question.key"></textarea>
   </div>
   `,
   styleUrls: ['./dynamic-form-question.component.css']
 })
 
-export class TextboxQuestionComponent {
-  static componentName = "TextboxQuestionComponent";
+export class TextareaQuestionComponent {
+  static componentName = "TextareaQuestionComponent";
   @Input() question: any;
   @Input() form: FormGroup;
 }
