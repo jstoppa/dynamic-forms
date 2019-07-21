@@ -55,8 +55,8 @@ export class QuestionService {
       }),
       new QuestionBase({
         id: "4",
-        key: "firstName",
-        label: "First name",
+        key: "_save",
+        label: "Save",
         required: true,
         position: {
           id: "topleft",

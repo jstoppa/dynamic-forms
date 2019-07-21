@@ -13,7 +13,10 @@ import { Template } from './models/template';
 export class PageComponent implements OnInit {
   @Input() questions: any = [];
   @Input() template: Template = null;
-  @Input() data = null;
+  @Input('data') set data(value: any) {
+    this._dataJson = JSON.stringify(value, null, 2);
+    this._data = value;
+  }
   
   editorOptions = {
     theme: "vs-dark",
@@ -56,6 +59,9 @@ export class PageComponent implements OnInit {
       this.templateError = "Error parsing JSON";
     }
   }
+
+  _dataJson = "";
+  _data = null;
 
   constructor(private store: Store<fromForm.State>) {}
 

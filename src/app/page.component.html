@@ -3,6 +3,8 @@
     [ngStyle]="{'background-color': activeEditor === editorType.Questions ? 'blanchedalmond':''}">Questions</button>
   <button class="button" (click)="changeEditor(editorType.Template)"
     [ngStyle]="{'background-color': activeEditor === editorType.Template ? 'blanchedalmond':''}">Template</button>
+  <button class="button" (click)="changeEditor(editorType.Data)"
+    [ngStyle]="{'background-color': activeEditor === editorType.Data ? 'blanchedalmond':''}">Data</button>
   <div class="grid-container">
     <div class="editor-container">
       <div class="editor" [ngStyle]="{'display': activeEditor === editorType.Questions ? '':'none'}">
@@ -15,10 +17,14 @@
         <ngx-monaco-editor class="code-editor" [options]="editorOptions" [ngModel]="_templateJson"
           (ngModelChange)="templateJson = $event"></ngx-monaco-editor>
       </div>
+      <div class="editor" [ngStyle]="{'display': activeEditor === editorType.Data ? '':'none'}">
+        <h2 style="color:red; padding-left:100px">{{ templateError }}</h2>
+        <ngx-monaco-editor class="code-editor" [options]="editorOptions" [ngModel]="_dataJson"></ngx-monaco-editor>
+      </div>
     </div>
     <div class="form">
       <h2>Job Application for Heroes</h2>
-      <app-dynamic-form [questions]="questions" [template]="template" [data]="data"></app-dynamic-form>
+      <app-dynamic-form [questions]="questions" [template]="template" [data]="_data"></app-dynamic-form>
     </div>
   </div>
 </div>
