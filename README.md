@@ -1,6 +1,6 @@
 # Dynamic forms with NgRx
 
-This project is a modified version of the dynamic forms in the angular website (https://angular.io/guide/dynamic-form)
+This project is a modified version of the dynamic forms example in the angular website (https://angular.io/guide/dynamic-form)
 
 ## Development server
 
