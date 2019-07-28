@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import * as fromForm from "./store/reducers";
-import { QuestionControlService } from './question-control.service';
+import { QuestionControlService } from './services/question-control.service';
 import { Template } from './models/template';
 import { Store } from '@ngrx/store';
 import { DataActions } from './store/actions';
