@@ -30,14 +30,14 @@
     "@ngrx/store": "^8.0.1",
     "@ngrx/store-devtools": "^8.1.0",
     "angular-in-memory-web-api": "github:brandonroberts/in-memory-web-api-bazel#50a34d8",
-    "copy-webpack-plugin": "^5.0.3",
+    "copy-webpack-plugin": "^11.0.0",
     "core-js": "^2.5.4",
     "ngx-monaco-editor": "^7.0.0",
     "rxjs": "^6.5.1",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "0.800.0",
+    "@angular-devkit/build-angular": "15.0.4",
     "@angular/cli": "^8.0.0",
     "@angular/compiler-cli": "^8.1.0-next.1",
     "@angular/platform-server": "^8.1.0-next.1",
